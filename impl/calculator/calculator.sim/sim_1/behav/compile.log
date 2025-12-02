@@ -1,0 +1,12 @@
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/design/simple_calculator/vhdl/io_ctrl.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity io_ctrl
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/design/simple_calculator/vhdl/calc_ctrl.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity calc_ctrl
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/design/simple_calculator/vhdl/alu.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity alu
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/design/simple_calculator/vhdl/io_ctrl_rtl.vhd" into library xil_defaultlib
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/design/simple_calculator/vhdl/calc_top.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity calc_top
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/design/simple_calculator/vhdl/alu_rtl.vhd" into library xil_defaultlib
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/design/simple_calculator/vhdl/calc_ctrl_rtl.vhd" into library xil_defaultlib
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/design/simple_calculator/vhdl/calc_top_struct.vhd" into library xil_defaultlib

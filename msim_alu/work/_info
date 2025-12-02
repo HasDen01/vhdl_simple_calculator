@@ -1,0 +1,87 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dc:/design/simple_calculator/msim_alu
+Ealu
+Z1 w1653927854
+Z2 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z3 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
+R0
+8../vhdl/alu.vhd
+F../vhdl/alu.vhd
+l0
+L15
+V7d1H<]KZP`5GV0CKJ7dZO2
+!s100 ;dCWd=ObYzaOACZ28V1IU1
+Z4 OV;C;10.5b;63
+32
+Z5 !s110 1653931477
+!i10b 1
+Z6 !s108 1653931477.000000
+!s90 -reportprogress|300|../vhdl/alu.vhd|
+!s107 ../vhdl/alu.vhd|
+!i113 1
+Z7 tExplicit 1 CvgOpt 0
+Artl
+DEx4 work 3 alu 0 22 7d1H<]KZP`5GV0CKJ7dZO2
+Z8 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
+R2
+R3
+8../vhdl/alu_rtl.vhd
+F../vhdl/alu_rtl.vhd
+l26
+L16
+VR=0E7Hg@`>0eebOiE=hH[3
+!s100 ?`6KU`AI9GO5kcO=RAMlM3
+R4
+32
+R5
+!i10b 1
+R6
+!s90 -reportprogress|300|../vhdl/alu_rtl.vhd|
+!s107 ../vhdl/alu_rtl.vhd|
+!i113 1
+R7
+Etb_alu
+Z9 w1653926824
+R2
+R3
+R0
+Z10 8../tb/tb_alu.vhd
+Z11 F../tb/tb_alu.vhd
+l0
+L16
+V;RI3OA6Ec0K@O;<9TcjI`2
+!s100 hhW51QR`jj0c>YQI4UN713
+R4
+32
+R5
+!i10b 1
+R6
+Z12 !s90 -reportprogress|300|../tb/tb_alu.vhd|
+Z13 !s107 ../tb/tb_alu.vhd|
+!i113 1
+R7
+Asim
+R2
+R3
+DEx4 work 6 tb_alu 0 22 ;RI3OA6Ec0K@O;<9TcjI`2
+l48
+L17
+VekJB;3m:PCl@dT:b7[cIA0
+!s100 FKGifD94BaVDK6K0k92Qg3
+R4
+32
+R5
+!i10b 1
+R6
+R12
+R13
+!i113 1
+R7

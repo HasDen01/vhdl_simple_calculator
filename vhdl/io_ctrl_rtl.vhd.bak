@@ -1,0 +1,106 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_arith.all;
+
+architecture rtl of io_ctrl is
+
+	constant C_ENCOUNTVAL : std_logic_vector(16 downto 0) := "11000011010100000"; -- 100k (100MHz / 1kHz)
+
+	signal s_enctr : std_logic_vector(16 downto 0); --counter
+	signal s_1khzen : std_logic; -- enable
+	signal swsync : std_logic_vector(15 downto 0); --debounce switches
+	signal pbsync : std_logic_vector(3 downto 0); --debounce buttons
+	signal s_ss_sel : std_logic_vector(3 downto 0); --
+	signal s_ss : std_logic_vector(7 downto 0); --
+
+	signal count : integer := 0;
+	type state_type is (idle, wait_time); --state machine
+	signal state : state_type := idle;
+	signal pb_val : std_logic_vector(3 downto 0);
+
+begin
+	-- rtl
+
+	------------------------------------
+	-- Generate 1 kHz enable signal. --
+	------------------------------------
+	p_slowen : process (clk_i, reset_i)
+	begin
+		if reset_i = '1' then -- asynchronous reset (active high)
+		s_1khzen <= '0';
+		elsif clk_i'EVENT and clk_i = '1' then -- rising clock edge
+			-- Enable signal is inactive per default.
+			if (s_enctr = C_ENCOUNTVAL) then -- When the terminal count is reached, set enable signal and reset the counter.
+				s_enctr <= "0" & x"0000";
+				s_1khzen <= '1';
+			else
+				s_1khzen <= '0';
+				s_enctr <= unsigned (s_enctr) + unsigned'(x"0001");
+
+				-- As long as the terminal count is not reached: increment the counter.
+			end if;
+		end if;
+	end process p_slowen;
+
+	------------------------------------
+	-- Debounce buttons and switches --
+	------------------------------------
+	p_debounce : process (clk_i, reset_i)
+	begin
+		if reset_i = '1' then -- asynchronous reset (active high)
+			state <= idle;
+			pbsync <= "0000";
+			pb_val <= (others => '0');
+ 
+		elsif clk_i'EVENT and clk_i = '1' then -- rising clock edge
+			if (s_1khzen = '1') then
+				case (state) is
+					when idle => 
+						if (pb_i'event) then
+							pb_val <= pb_i;
+							state <= wait_time;
+						else
+							state <= idle; --wait until button is pressed.
+						end if;
+					when wait_time => 
+						if (count = 20) then
+							count <= 0;
+							if (pb_i = pb_val) then
+								pbsync <= pb_val;
+							end if;
+							state <= idle;
+						else 
+						    count <= count + 1;
+						end if;
+				end case;
+			end if;
+		end if;
+	end process p_debounce;
+
+	swsync_o <= swsync;
+	pbsync_o <= pbsync;
+
+	----------------------------------------------------
+	-- Display controller for the 7-segment display --
+	----------------------------------------------------
+
+	p_display_ctrl : process (clk_i, reset_i)
+	begin
+		if reset_i = '1' then -- asynchronous reset (active high)
+
+		elsif clk_i'EVENT and clk_i = '1' then -- rising clock edge
+			if (s_1khzen = '1') then
+
+			end if;
+		end if;
+	end process p_display_ctrl;
+
+	ss_o <= s_ss;
+	ss_sel_o <= s_ss_sel;
+
+	--------------------------
+	-- Handle the 16 LEDs --
+	--------------------------
+
+	led_o <= led_i; -- simply connect the internal to the external signals
+end rtl;

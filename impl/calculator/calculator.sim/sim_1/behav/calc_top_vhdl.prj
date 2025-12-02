@@ -1,0 +1,12 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  "../../../../../vhdl/io_ctrl.vhd"
+vhdl xil_defaultlib  "../../../../../vhdl/calc_ctrl.vhd"
+vhdl xil_defaultlib  "../../../../../vhdl/alu.vhd"
+vhdl xil_defaultlib  "../../../../../vhdl/io_ctrl_rtl.vhd"
+vhdl xil_defaultlib  "../../../../../vhdl/calc_top.vhd"
+vhdl xil_defaultlib  "../../../../../vhdl/alu_rtl.vhd"
+vhdl xil_defaultlib  "../../../../../vhdl/calc_ctrl_rtl.vhd"
+vhdl xil_defaultlib  "../../../../../vhdl/calc_top_struct.vhd"
+
+# Do not sort compile order
+nosort
